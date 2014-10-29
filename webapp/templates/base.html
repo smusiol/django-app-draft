@@ -1,0 +1,55 @@
+{% load compress %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+        <title>{% block head_title %}{% endblock %}</title>
+        <meta name="description" content="{% block head_description %}{% endblock %}"/>
+        <meta name="author" content=""/>
+        <meta name="keywords" content=""/>
+    
+        {% compress js %}
+            <script type="text/javascript" src="{{ STATIC_URL }}js/jquery/jquery-2.1.1.js"></script>
+            {% block head %}{% endblock %}
+        {% endcompress %}
+    
+        {% compress css %}
+            <link href="{{ STATIC_URL }}less/bootstrap/bootstrap.less" rel="stylesheet" type="text/less" media="all">
+        {% endcompress %}
+    </head>
+        
+    <body>
+        <!--  header -->
+        <div class="container">
+            <div class="row">
+                <div class="page-header">
+                  <h1>Django app draft</h1>
+                </div>
+            </div>
+        </div>
+        
+        <!-- content -->
+        
+        <div class="container">
+            <div class="row">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+        
+        <!-- footer -->
+        
+        <div class="container">
+            <div class="row">
+                <p class="text-center">
+                    <a href="https://github.com/smusiol/django-app-draft">Django app draft</a>
+                    v 1.0
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
